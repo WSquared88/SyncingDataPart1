@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        "use strict";
+		
+		var socket;
+		var myNum = 5;
+		
+		function init()
+		{
+			socket = io.connect();
+			setupSocket();
+			
+			socket.on("connect", function()
+			{
+				setInterval(sendMessage, 3000);
+			});
+		}
+		
+		function setupSocket()
+		{
+			socket.on("updatePara", function(data)
+			{
+				document.querySelector("#totalScore").innerText = data.message;
+			});
+			
+			socket.on("clearPara", function(data)
+			{
+				document.querySelector("#totalScore").innerText = "";
+			});
+		}
+		
+		function sendMessage()
+		{
+			var messageData = 
+			{
+				message: myNum
+			};
+			
+			socket.emit("updatePara", messageData);
+		}
+		
+		window.onload = init;
+	</script>
+</head>
+<body>
+    <h2>Total Score: <span id="totalScore"></span></h2>
+</body>
+</html>

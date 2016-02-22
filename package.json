@@ -1,0 +1,16 @@
+{
+  "name": "syncing_data",
+  "version": "1.0.0",
+  "description": "Homework part 1",
+  "main": "src/index.js",
+  "dependencies": {
+    "socket.io": "^1.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wes Waligora",
+  "license": "ISC"
+}
